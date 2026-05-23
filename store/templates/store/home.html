@@ -2,7 +2,19 @@
 
 {% block content %}
 
-<h1>Bienvenidos a la Paletería 🍦</h1>
+<h1 style="font-size:45px;">
+    Bienvenidos a la Paletería 🍦
+</h1>
+
+<h3 style="
+    text-align:center;
+    color:#666;
+    font-style:italic;
+    margin-bottom:40px;
+    font-size:25px;
+">
+    “El rincón más dulce y helado”
+</h3>
 
 <div style="display:flex; flex-wrap:wrap; justify-content:center;">
 
@@ -13,7 +25,10 @@
         <img src="{{ product.imagen.url }}"
              width="200"
              height="200"
-             style="border-radius:10px;">
+             style="
+                border-radius:10px;
+                object-fit:cover;
+             ">
     {% endif %}
 
     <h3>{{ product.name }}</h3>
