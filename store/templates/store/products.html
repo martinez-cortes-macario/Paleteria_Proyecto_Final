@@ -2,14 +2,37 @@
 
 {% block content %}
 
-<h2>Productos</h2>
+<h2>Productos 🍦</h2>
+
+<div style="display:flex; flex-wrap:wrap; justify-content:center;">
 
 {% for product in products %}
-<div class="card">
+<div class="card" style="width:250px; text-align:center;">
+
+    {% if product.imagen %}
+        <img src="{{ product.imagen.url }}"
+             width="200"
+             height="200"
+             style="border-radius:10px;">
+    {% endif %}
+
+    <h3>{{ product.name }}</h3>
+
+    <p>{{ product.description }}</p>
+
+    <p><strong>${{ product.price }}</strong></p>
+
+    {% if product.categoria %}
+        <p>Categoría: {{ product.categoria.nombre }}</p>
+    {% endif %}
+
     <a href="{% url 'product_detail' product.id %}">
-        {{ product.name }}
+        <button>Ver detalles</button>
     </a>
+
 </div>
 {% endfor %}
+
+</div>
 
 {% endblock %}
