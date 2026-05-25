@@ -1,0 +1,39 @@
+{% extends 'store/base.html' %}
+
+{% block content %}
+
+<h2 style="color:#ff4081;">🛒 Carrito de compras</h2>
+
+{% if products %}
+    <div>
+        {% for product in products %}
+            <div style="border:1px solid #ccc; padding:10px; margin:10px; border-radius:10px;">
+                
+                <h3>{{ product.name }}</h3>
+                <p>Precio: ${{ product.price }}</p>
+                <p>Cantidad: {{ product.quantity }}</p>
+                <p>Subtotal: ${{ product.subtotal }}</p>
+
+            </div>
+        {% endfor %}
+    </div>
+
+    <h2 style="color:green;">Total: ${{ total }}</h2>
+
+    <a href="{% url 'success' %}" 
+       style="background:green; color:white; padding:10px; text-decoration:none; border-radius:5px;">
+       Comprar
+    </a>
+
+    <br><br>
+
+    <a href="{% url 'clear_cart' %}" 
+       style="background:red; color:white; padding:10px; text-decoration:none; border-radius:5px;">
+       Vaciar carrito
+    </a>
+
+{% else %}
+    <p>El carrito está vacío 😢</p>
+{% endif %}
+
+{% endblock %}
