@@ -30,3 +30,43 @@ def login_view(request):
             return redirect('home')
 
     return render(request, 'store/login.html')
+def add_to_cart(request, product_id):
+    cart = request.session.get('cart', {})
+
+    product = get_object_or_404(Product, id=product_id)
+
+    if str(product_id) in cart:
+        cart[str(product_id)] += 1
+    else:
+        cart[str(product_id)] = 1
+
+    request.session['cart'] = cart
+    return redirect('cart')
+
+
+def cart_view(request):
+    cart = request.session.get('cart', {})
+    products = []
+    total = 0
+
+    for product_id, quantity in cart.items():
+        product = Product.objects.get(id=product_id)
+        product.quantity = quantity
+        product.subtotal = product.price * quantity
+        total += product.subtotal
+        products.append(product)
+
+    return render(request, 'store/cart.html', {
+        'products': products,
+        'total': total
+    })
+
+
+def clear_cart(request):
+    request.session['cart'] = {}
+    return redirect('cart')
+
+
+def success(request):
+    request.session['cart'] = {}
+    return render(request, 'store/success.html')
