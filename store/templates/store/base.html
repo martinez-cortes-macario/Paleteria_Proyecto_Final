@@ -1,8 +1,11 @@
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Paletería</title>
+
 
     <style>
         body {
@@ -11,11 +14,13 @@
             margin: 0;
         }
 
+
         nav {
             background: #ff4d6d;
             padding: 15px;
             text-align: center;
         }
+
 
         nav a {
             color: white;
@@ -24,14 +29,17 @@
             font-weight: bold;
         }
 
+
         h1, h2 {
             text-align: center;
             color: #ff4d6d;
         }
 
+
         .container {
             padding: 20px;
         }
+
 
         .card {
             background: white;
@@ -40,6 +48,7 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
+
 
         button {
             background: #80ed99;
@@ -52,17 +61,26 @@
 </head>
 <body>
 
+
+<!-- 🔥 NAVBAR FUNCIONAL -->
 <nav>
-    <a href="/">Inicio</a>
-    <a href="/productos/">Productos</a>
-    <a href="/about/">Nosotros</a>
-    <a href="/login/">Login</a>
+    <a href="{% url 'home' %}">Inicio</a>
+    <a href="{% url 'products' %}">Productos</a>
+    <a href="{% url 'about' %}">Nosotros</a>
+    <a href="{% url 'cart' %}">🛒 Carrito</a>
+    <a href="{% url 'login' %}">Login</a>
 </nav>
+
 
 <div class="container">
     {% block content %}
     {% endblock %}
 </div>
 
+
 </body>
 </html>
+
+
+
+
