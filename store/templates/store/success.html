@@ -1,0 +1,38 @@
+{% extends 'store/base.html' %}
+
+
+{% block content %}
+
+
+<div style="text-align:center; margin-top:50px;">
+
+
+    <h1 style="color:green; font-size:40px;">
+        🎉 ¡Compra realizada con éxito!
+    </h1>
+
+
+    <p style="font-size:20px; margin-top:20px;">
+        Gracias por tu compra en la paletería 🍦
+    </p>
+
+
+    <br><br>
+
+
+    <a href="{% url 'home' %}" 
+       style="
+       background:#ff4d6d;
+       color:white;
+       padding:10px 20px;
+       text-decoration:none;
+       border-radius:5px;
+       ">
+       Volver al inicio
+    </a>
+
+
+</div>
+
+
+{% endblock %}
