@@ -1,38 +1,72 @@
 {% extends 'store/base.html' %}
 
+
 {% block content %}
+
 
 <h2>Productos 🍦</h2>
 
-<div style="display:flex; flex-wrap:wrap; justify-content:center;">
+
+<div style="display:flex; flex-wrap:wrap; justify-content:center; gap:20px;">
+
 
 {% for product in products %}
-<div class="card" style="width:250px; text-align:center;">
+<div class="card" style="
+    width:250px; 
+    text-align:center; 
+    border:1px solid #ccc; 
+    padding:15px; 
+    border-radius:10px;
+">
+
 
     {% if product.imagen %}
         <img src="{{ product.imagen.url }}"
              width="200"
              height="200"
-             style="border-radius:10px;">
+             style="border-radius:10px; object-fit:cover;">
     {% endif %}
+
 
     <h3>{{ product.name }}</h3>
 
+
     <p>{{ product.description }}</p>
 
+
     <p><strong>${{ product.price }}</strong></p>
+
 
     {% if product.categoria %}
         <p>Categoría: {{ product.categoria.nombre }}</p>
     {% endif %}
 
+
     <a href="{% url 'product_detail' product.id %}">
         <button>Ver detalles</button>
     </a>
 
+
+    <!-- 🔥 BOTÓN CARRITO -->
+    <br><br>
+    <a href="{% url 'add_to_cart' product.id %}" 
+       style="
+       display:inline-block;
+       background:#ff9800;
+       color:white;
+       padding:8px;
+       text-decoration:none;
+       border-radius:5px;
+       ">
+       🛒 Agregar al carrito
+    </a>
+
+
 </div>
 {% endfor %}
 
+
 </div>
+
 
 {% endblock %}
