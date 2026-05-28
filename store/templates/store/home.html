@@ -3,7 +3,7 @@
 {% block content %}
 
 <h1 style="font-size:45px;">
-    Bienvenidos a la Paletería 🍦
+    Bienvenidos a Ice Dream 🍦
 </h1>
 
 <h3 style="
@@ -15,47 +15,117 @@
 ">
     “El rincón más dulce y helado”
 </h3>
+<form method="GET" style="text-align:center; margin-bottom:40px;">
 
-<div style="display:flex; flex-wrap:wrap; justify-content:center; gap:20px;">
+    <input type="text"
+           name="q"
+           placeholder="Buscar productos..."
+           style="
+                padding:10px;
+                width:300px;
+                border-radius:10px;
+                border:1px solid #ccc;
+           ">
 
-{% for product in products %}
-<div class="card" style="
-    width:250px; 
-    text-align:center; 
-    border:1px solid #ccc; 
-    padding:15px; 
-    border-radius:10px;
-">
+    <button type="submit">
+        Buscar 🔎
+    </button>
+
+</form>
+
+<!-- PALETAS -->
+<h2>🍭 Paletas</h2>
+
+<div style="display:flex; flex-wrap:wrap; justify-content:center;">
+
+{% for product in paletas %}
+<div class="card" style="width:250px; text-align:center;">
 
     {% if product.imagen %}
         <img src="{{ product.imagen.url }}"
              width="200"
              height="200"
-             style="
-                border-radius:10px;
-                object-fit:cover;
-             ">
+             style="border-radius:10px; object-fit:cover;">
     {% endif %}
 
     <h3>{{ product.name }}</h3>
 
-    <p>{{ product.description }}</p>
+    <p>${{ product.price }}</p>
 
-    <p><strong>${{ product.price }}</strong></p>
+</div>
+{% endfor %}
 
-    <!-- 🔥 BOTÓN CARRITO -->
-    <a href="{% url 'add_to_cart' product.id %}" 
-       style="
-       display:inline-block;
-       background:#ff9800;
-       color:white;
-       padding:8px;
-       margin-top:10px;
-       text-decoration:none;
-       border-radius:5px;
-       ">
-       🛒 Agregar al carrito
-    </a>
+</div>
+
+
+<!-- NIEVES -->
+<h2>🍦 Nieves</h2>
+
+<div style="display:flex; flex-wrap:wrap; justify-content:center;">
+
+{% for product in nieves %}
+<div class="card" style="width:250px; text-align:center;">
+
+    {% if product.imagen %}
+        <img src="{{ product.imagen.url }}"
+             width="200"
+             height="200"
+             style="border-radius:10px; object-fit:cover;">
+    {% endif %}
+
+    <h3>{{ product.name }}</h3>
+
+    <p>${{ product.price }}</p>
+
+</div>
+{% endfor %}
+
+</div>
+
+
+<!-- AGUAS -->
+<h2>🥤 Aguas</h2>
+
+<div style="display:flex; flex-wrap:wrap; justify-content:center;">
+
+{% for product in aguas %}
+<div class="card" style="width:250px; text-align:center;">
+
+    {% if product.imagen %}
+        <img src="{{ product.imagen.url }}"
+             width="200"
+             height="200"
+             style="border-radius:10px; object-fit:cover;">
+    {% endif %}
+
+    <h3>{{ product.name }}</h3>
+
+    <p>${{ product.price }}</p>
+
+</div>
+{% endfor %}
+
+</div>
+
+
+<!-- SNACKS -->
+<h2>🍟 Snacks</h2>
+
+<div style="display:flex; flex-wrap:wrap; justify-content:center;">
+
+{% for product in snacks %}
+<div class="card" style="width:250px; text-align:center;">
+
+    {% if product.imagen %}
+        <img src="{{ product.imagen.url }}"
+             width="200"
+             height="200"
+             style="border-radius:10px; object-fit:cover;">
+    {% endif %}
+
+    <h3>{{ product.name }}</h3>
+
+    <p>${{ product.price }}</p>
 
 </div>
 {% endfor %}

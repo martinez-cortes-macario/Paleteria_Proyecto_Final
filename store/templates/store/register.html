@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1>Iniciar Sesión 🔐</h1>
+<h1>Registrarse 👤</h1>
 
 <form method="POST" style="max-width:400px; margin:auto;">
 
@@ -14,6 +14,12 @@
            required
            style="width:100%; padding:10px; margin:10px 0;">
 
+    <input type="email"
+           name="email"
+           placeholder="Correo"
+           required
+           style="width:100%; padding:10px; margin:10px 0;">
+
     <input type="password"
            name="password"
            placeholder="Contraseña"
@@ -21,7 +27,7 @@
            style="width:100%; padding:10px; margin:10px 0;">
 
     <button type="submit">
-        Entrar
+        Registrarse
     </button>
 
 </form>
